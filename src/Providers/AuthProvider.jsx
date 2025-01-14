@@ -6,7 +6,7 @@ export const AuthContext=createContext(null)
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null)
     const [loading,setLoading]=useState(true)
-    const register=(email,password)=>{
+    const registerUser=(email,password)=>{
         setLoading(true)
        return createUserWithEmailAndPassword(auth,email,password)
     }
@@ -27,7 +27,7 @@ const AuthProvider = ({children}) => {
     }
 
     const authInfo={
-        register,
+        registerUser,
         login,
         updateUserProfile,
         logout,

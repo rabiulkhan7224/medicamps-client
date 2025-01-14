@@ -1,12 +1,28 @@
 import { data } from "autoprefixer";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import useImageDB from "../../hooks/useImageDB";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
-
+   const{registerUser}=useContext(AuthContext)
     const {register,handleSubmit,reset,formState:{errors}}=useForm()
 
-    const onSubmit=data=>{
-        console.log(data)
+    const onSubmit=async(data)=>{
+        if(data){
+
+           
+            const photoURL=await useImageDB(data.photo[0])
+            
+            try {
+                const result= await registerUser(data.email,data.password)
+               
+                reset()
+            } catch (error) {
+                console.log(error.message)
+            }
+        }
     }
     return (
         <section className=" ">

@@ -5,11 +5,7 @@ import axios from "axios";
         
     })
 const useAxiosPublic = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return axiosPublic;
 };
 
 export default useAxiosPublic;
