@@ -1,7 +1,7 @@
 import { data } from "autoprefixer";
 import { useForm } from "react-hook-form";
 
-const SingUp = () => {
+const SignUp = () => {
 
     const {register,handleSubmit,reset,formState:{errors}}=useForm()
 
@@ -73,4 +73,4 @@ const SingUp = () => {
     );
 };
 
-export default SingUp;
+export default SignUp;
