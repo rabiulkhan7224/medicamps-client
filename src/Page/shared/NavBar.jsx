@@ -5,7 +5,7 @@ const NavBar = () => {
     // const { user, logoutUser } = useContext(AuthContext)
     const link = <>
         <li><NavLink className={({ isActive }) =>
-            isActive ? "text-red-500" : "text-black"
+            isActive ? "text-blue-600" : "text-black"
         } to={'/'}>Home</NavLink></li>
         
         
@@ -22,8 +22,8 @@ const NavBar = () => {
     // }
 const user=false
     return (
-        <div className="fixed top-0 left-0 right-0 z-50">
-            <div className="navbar bg-base-100">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-primarycolor">
+            <div className="navbar container mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,7 +46,7 @@ const user=false
                             {link}
                         </ul>
                     </div>
-                    <Link to={'/'} className="btn font-bold btn-ghost text-2xl">Medi Camps</Link>
+                    <Link to={'/'} className=" font-bold  text-2xl">Medi Camps</Link>
                 </div>
                 <div className="navbar-center hidden md:flex">
                     <ul className="menu menu-horizontal px-1">

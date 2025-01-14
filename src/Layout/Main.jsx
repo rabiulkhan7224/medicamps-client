@@ -3,10 +3,10 @@ import Navbar from "../Page/shared/Navbar";
 
 const Main = () => {
     return (
-        <div>
+        <div className="bg-background">
         
         <Navbar></Navbar>
-        <main className="h-svh">
+        <main className='pt-24 px-2 min-h-[calc(100vh-68px)]'>
 
         <Outlet></Outlet>
         </main>
