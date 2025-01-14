@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router'
 import router from './Router/router'
 import AuthProvider from './Providers/AuthProvider'
+import { Toaster } from 'react-hot-toast'
 
 createRoot(document.getElementById('root')).render(
   <div className='container mx-auto '>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
     <AuthProvider>
 
     <RouterProvider router={router}></RouterProvider>
+    <Toaster position='top-right' reverseOrder={false} />
     </AuthProvider>
   </StrictMode>,
   </div>

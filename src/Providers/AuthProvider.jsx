@@ -15,9 +15,11 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth,email,password)
 
     }
-    const updateUserProfile=(updateData)=>{
+    const updateUserProfile=(name,photo)=>{
         setLoading(true)
-        return updateProfile(auth.currentUser,updateData)
+        return updateProfile(auth.currentUser,{
+            displayName: name, photoURL: photo
+        })
 
     }
     const logout=()=>{

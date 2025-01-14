@@ -1,8 +1,10 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
 
-    // const { user, logoutUser } = useContext(AuthContext)
+    const { user, logout } = useAuth()
     const link = <>
         <li><NavLink className={({ isActive }) =>
             isActive ? "text-blue-600" : "text-black"
@@ -10,17 +12,17 @@ const NavBar = () => {
         
         
     </>
-    // const navigate = useNavigate()
-    // const handlelogOut = () => {
-    //     logoutUser()
-    //         .then(() => {
-    //             toast.warn('user Logout')
-    //             navigate('/')
-    //         }).catch(error => {
-    //             console.log(error.message)
-    //         })
-    // }
-const user=false
+    const navigate = useNavigate()
+    const handlelogOut = () => {
+        logout()
+            .then(() => {
+                toast.success('logout user')
+                navigate('/')
+            }).catch(error => {
+                console.log(error.message)
+            })
+    }
+
     return (
         <div className="fixed top-0 left-0 right-0 z-50 bg-primarycolor">
             <div className="navbar container mx-auto ">
@@ -46,7 +48,9 @@ const user=false
                             {link}
                         </ul>
                     </div>
-                    <Link to={'/'} className=" font-bold  text-2xl">Medi Camps</Link>
+                    <img className="w-10" src="/medicamps-logos.png" alt="" />
+                    <Link to={'/'} className=" font-bold  md:text-2xl">
+                    Medi Camps</Link>
                 </div>
                 <div className="navbar-center hidden md:flex">
                     <ul className="menu menu-horizontal px-1">
