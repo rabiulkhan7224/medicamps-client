@@ -1,11 +1,9 @@
-import { data } from "autoprefixer";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import useImageDB from "../../hooks/useImageDB";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
@@ -27,7 +25,7 @@ const SignUp = () => {
                     name: data.name,
                     email: data.email
                 }
-                const res = await axiosPublic.post('/user', userInfo)
+                const res = await axiosPublic.post(`/users/${data.email}`, userInfo)
 
                 navigate('/')
                 toast.success('Signup successful')
@@ -96,6 +94,9 @@ const SignUp = () => {
                             </div>
 
 
+                                    <div>
+                                    <h2 className="text-center">already have an account? <Link to={'/login'} className="text-blue-500 hover:underline">login</Link></h2>
+                                    </div>
 
 
                         </form>
