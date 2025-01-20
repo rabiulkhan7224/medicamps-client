@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FaAlignLeft } from 'react-icons/fa6';
+import { RiAliensLine } from 'react-icons/ri';
 import { NavLink } from 'react-router';
 
 
@@ -12,6 +14,7 @@ const SideBar = () => {
     const links = [
       { name: 'Dashboard', path: '/' },
       { name: 'Profile', path: '/dashboard/profile' },
+      { name: 'AddCamp', path: '/dashboard/addcamp' },
       { name: 'Settings', path: '/settings' },
     ];
   
@@ -22,7 +25,7 @@ const SideBar = () => {
           onClick={toggleSidebar}
           className="lg:hidden fixed top-24 left-4 z-20 bg-gray-800 text-white p-2 rounded"
         >
-          ☰
+          <FaAlignLeft />
         </button>
   
         {/* Sidebar */}
