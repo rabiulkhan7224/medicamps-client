@@ -16,7 +16,7 @@ const Login = () => {
     const form = location?.state?.from.pathname || '/'
     const { register, handleSubmit, } = useForm()
     const onSubmit = async (data) => {
-        console.log(data)
+        
         if (data) {
             try {
                 await login(data.email, data.password)
@@ -33,7 +33,7 @@ const axiosPublic=useAxiosPublic()
 
         try {
             const {user} = await signInWithGoogle()
-            console.log(user)
+            
             if(user){
 
                 await axiosPublic.post(`/users/${user.email}`,{name:user.displayName,email:user.email})

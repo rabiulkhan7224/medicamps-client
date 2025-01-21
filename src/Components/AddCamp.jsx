@@ -1,30 +1,61 @@
 import { useForm } from 'react-hook-form';
 import useImageDB from '../hooks/useImageDB';
+import useAxiosSecure from '../hooks/useAxiosSecure';
+import useAuth from '../hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const AddCamp = () => {
+  const axiosSecure=useAxiosSecure()
+  const {user}=useAuth()
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset,
       } = useForm();
+
+    
+
+
+    
+
+  
     
       const onSubmit =async (data) => {
+        console.log(data)
 
-          console.log('Submitted Data:', data.image[0]);
         if(data){
-            try {
-               const imageUrl= await useImageDB(data.image[0])
+          
+          const imageUrl= await useImageDB(data.images[0])
+          
+          console.log(imageUrl)
+          const campsData={
+            campName:data.campName,
+            image:imageUrl,
+            campFees:parseInt(data.campFees),
+            dateTime:data.dateTime,
+            location:data.location,
+            healthcareProfessional:data.healthcareProfessional,
+            description:data.description,
+            participantCount:0,
+            addInfo:{
+              email:user?.email,
+              name:user?.displayName,}
+          }
+          console.log(campsData)
+          try {
+           await axiosSecure.post('/addcamp',campsData)
+           toast.success('New camp Added successful')
 
-                
-            } catch (error) {
-                
-            }
+          } catch (error) {
+            toast.error(error.message)
+            
+          }
+            
         }
-        // Simulated API Call
-    
-        // Clear form after submission
-        reset();
+        
+
+       
       };
     return (
         <div className="container mx-auto px-4 py-8">
@@ -56,7 +87,7 @@ const AddCamp = () => {
               </label>
               <input
                 type="file"
-                {...register('image', { required: 'Image  is required' })}
+                {...register('images', { required: 'Image  is required' })}
                 placeholder="Enter image "
                 className={`file-input file-input-bordered w-full max-w-xs ${
                   errors.image ? 'input-error' : ''
@@ -143,7 +174,7 @@ const AddCamp = () => {
             </div>
   
             
-              <div>
+              
 
 
             {/* Description */}
@@ -165,10 +196,11 @@ const AddCamp = () => {
             </div>
             {/* Submit Button */}
             <div className="form-control mt-6 ">
-              <button className="btn bg-primarycolor w-full">Submit</button>
+              
+              <input type="submit" className="btn bg-primarycolor w-full" value="Add Camp" />
             </div>
 
-              </div>
+             
   
           </form>
         </div>

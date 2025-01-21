@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import useAuth from "./useAuth";
 
 
-const axiosInstance = axios.create({
+const axiosSecure = axios.create({
     baseURL:'https://medicamps-server.vercel.app',
     withCredentials: true
 })
@@ -14,7 +14,7 @@ const useAxiosSecure = () => {
     const{logout}=useAuth()
 const navigate=useNavigate()
 useEffect(() => {
-    axiosInstance.interceptors.response.use(response => {
+    axiosSecure.interceptors.response.use(response => {
         return response;
     }, error => {
         console.log('api response error', error.status)
@@ -31,7 +31,7 @@ useEffect(() => {
     })
 
 }, [logout,navigate])
-return axiosInstance;
+return axiosSecure;
 };
         
 
