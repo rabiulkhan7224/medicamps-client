@@ -5,11 +5,14 @@ import SignUp from "../Page/sign up/SignUp";
 import Login from "../Page/Login/Login";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddCamp from "../Components/AddCamp";
+import ErrorPage from "../Page/Error/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([{
     path:'/',
     element:<Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             path:'/',
@@ -26,7 +29,7 @@ const router = createBrowserRouter([{
         },
         {
             path:'/dashboard',
-            element:<DashboardLayout></DashboardLayout>,
+            element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
             children:[
                 {
                 path:'profile',

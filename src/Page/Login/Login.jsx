@@ -13,7 +13,7 @@ const Login = () => {
     const { login, signInWithGoogle } = useAuth()
     const location = useLocation()
     const navigate = useNavigate()
-    const form = location?.state?.form.pathName || '/'
+    const form = location?.state?.from.pathname || '/'
     const { register, handleSubmit, } = useForm()
     const onSubmit = async (data) => {
         console.log(data)
@@ -38,6 +38,7 @@ const axiosPublic=useAxiosPublic()
 
                 await axiosPublic.post(`/users/${user.email}`,{name:user.displayName,email:user.email})
                 toast.success('Login Successful')
+                navigate(form, { replace: true })
             }
         } catch (error) {
             toast.error(error.message)
