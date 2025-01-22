@@ -9,6 +9,7 @@ import ErrorPage from "../Page/Error/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import AvailableCamps from "../Page/Available/AvailableCamps";
 import CampDetails from "../Page/Available/CampDetails";
+import RegisteredCamps from "../Components/RegisteredCamps";
 
 
 const router = createBrowserRouter([{
@@ -49,6 +50,10 @@ const router = createBrowserRouter([{
                 {
                 path:'addcamp',
                 element: <AddCamp></AddCamp>
+            },
+                {
+                path:'registered',
+                element: <RegisteredCamps></RegisteredCamps>
             },
         ]
         }

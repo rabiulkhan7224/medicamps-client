@@ -15,6 +15,7 @@ const SideBar = () => {
       { name: 'Dashboard', path: '/' },
       { name: 'Profile', path: '/dashboard/profile' },
       { name: 'AddCamp', path: '/dashboard/addcamp' },
+      { name: 'Registered Camps', path: '/dashboard/registered' },
       { name: 'Settings', path: '/settings' },
     ];
   
@@ -23,7 +24,7 @@ const SideBar = () => {
         {/* Hamburger Menu for Small Screens */}
         <button
           onClick={toggleSidebar}
-          className="lg:hidden fixed top-24 left-4 z-20 bg-gray-800 text-white p-2 rounded"
+          className="lg:hidden fixed top-24 left-4 z-20 bg-primarycolor/30 text-white p-2 rounded"
         >
           <FaAlignLeft />
         </button>
