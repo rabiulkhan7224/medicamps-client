@@ -33,7 +33,7 @@ const CampDetails = () => {
         
         setLoading(true);
         const participantData = {
-            campId: id,
+            campId: camp._id,
             campFees: camp.campFees,
             campName:camp.campName,
             participantName: user?.displayName,

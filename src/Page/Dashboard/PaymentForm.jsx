@@ -7,13 +7,14 @@ import useAuth from "../../hooks/useAuth";
 
 
 const PaymentForm = ({registerInfo}) => {
-
+console.log(registerInfo)
   const stripe = useStripe()
   const elements = useElements()
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const {user}=useAuth()
   const axiosPublic=useAxiosPublic()
+const amountSM=registerInfo?.campFees*100 
 
 
   const handleSubmit = async (e) => {
@@ -21,7 +22,7 @@ const PaymentForm = ({registerInfo}) => {
     
     setLoading(true);
     try {
-      const { data } = await axiosPublic.post('/create-payment-intent', { amount: 5000, currency: 'usd' })
+      const { data } = await axiosPublic.post('/create-payment-intent', { amount: amountSM, currency: 'usd' })
       console.log(data)
       const clientSecret = data.clientSecret
       // Confirm the payment
@@ -35,6 +36,9 @@ const PaymentForm = ({registerInfo}) => {
       });
 
       const paymentHistory={
+        email:user?.email,
+        campName:registerInfo?.campName,
+        
 
       }
       
