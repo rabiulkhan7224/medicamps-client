@@ -10,7 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AvailableCamps from "../Page/Available/AvailableCamps";
 import CampDetails from "../Page/Available/CampDetails";
 import RegisteredCamps from "../Components/RegisteredCamps";
-
+import Payment from "../Page/Dashboard/Payment";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -54,6 +54,10 @@ const router = createBrowserRouter([{
                 {
                 path:'registered',
                 element: <RegisteredCamps></RegisteredCamps>
+            },
+                {
+                path:'payment/:id',
+                element: <Payment></Payment>
             },
         ]
         }
