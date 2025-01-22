@@ -7,6 +7,8 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import AddCamp from "../Components/AddCamp";
 import ErrorPage from "../Page/Error/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import AvailableCamps from "../Page/Available/AvailableCamps";
+import CampDetails from "../Page/Available/CampDetails";
 
 
 const router = createBrowserRouter([{
@@ -26,6 +28,15 @@ const router = createBrowserRouter([{
         {
             path:'/login',
             element:<Login></Login>,
+        },
+        {
+            path:'/available',
+            element:<AvailableCamps></AvailableCamps>,
+        },
+        {
+            path:'/camps/:id',
+            element:<CampDetails></CampDetails>,
+            
         },
         {
             path:'/dashboard',
