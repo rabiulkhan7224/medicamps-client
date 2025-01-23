@@ -31,14 +31,12 @@ const PaymentHistory = () => {
         <th>Email</th>
        
         <th>Transaction Id</th>
-        <th>Date</th>
-        
-      </tr>
+        <th>Date</th></tr>
     </thead>
     <tbody>
 
         
-        {paymentdata.map((payment,index)=>(<tr key={payment._id} className="hover">
+        {paymentdata.map((payment,index)=>(<tr key={payment._id} className="hover:bg-blue-800/30 border">
         <th>{index+1}</th>
         <td>{payment.campName}</td>
         <td>{payment.campFees}</td>

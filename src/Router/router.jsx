@@ -13,6 +13,7 @@ import RegisteredCamps from "../Components/RegisteredCamps";
 import Payment from "../Page/Dashboard/Payment";
 import AdminRuter from "./AdminRuter";
 import PaymentHistory from "../Page/Dashboard/PaymentHistory";
+import ManageCamps from "../Page/Dashboard/ManageCamps";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -65,6 +66,10 @@ const router = createBrowserRouter([{
             {
                 path:'payments-history',
                 element: <PaymentHistory></PaymentHistory>
+            },
+            {
+                path:'manage-camps',
+                element: <AdminRuter><ManageCamps></ManageCamps></AdminRuter>
             },
         ]
         }

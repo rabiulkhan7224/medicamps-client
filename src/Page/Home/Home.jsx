@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Highest from "./Highest";
 
 const Home = () => {
     return (
@@ -6,6 +7,10 @@ const Home = () => {
             <div className="relative">
 
           <Banner></Banner>
+
+          <div>
+            <Highest></Highest>
+          </div>
             </div>
         </div>
     );
