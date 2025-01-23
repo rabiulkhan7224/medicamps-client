@@ -3,6 +3,8 @@ import useImageDB from '../hooks/useImageDB';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
 import toast from 'react-hot-toast';
+import { useState } from 'react';
+import Loader from '../Page/shared/Loader';
 
 const AddCamp = () => {
   const axiosSecure=useAxiosSecure()
@@ -13,6 +15,7 @@ const AddCamp = () => {
         formState: { errors },
         reset,
       } = useForm();
+      const [loading,setLoading]=useState(false)
 
     
 
@@ -22,13 +25,13 @@ const AddCamp = () => {
   
     
       const onSubmit =async (data) => {
-        console.log(data)
-
+        
+        setLoading(true)
         if(data){
           
           const imageUrl= await useImageDB(data.images[0])
           
-          console.log(imageUrl)
+         
           const campsData={
             campName:data.campName,
             image:imageUrl,
@@ -46,10 +49,12 @@ const AddCamp = () => {
           try {
            await axiosSecure.post('/addcamp',campsData)
            toast.success('New camp Added successful')
-
+            reset()
           } catch (error) {
             toast.error(error.message)
             
+          }finally{
+            setLoading(false)
           }
             
         }
@@ -57,6 +62,7 @@ const AddCamp = () => {
 
        
       };
+      if(loading)return <><Loader></Loader></>
     return (
         <div className="container mx-auto px-4 py-8">
         <div className=" p-6 rounded-lg shadow-md max-w-3xl mx-auto">

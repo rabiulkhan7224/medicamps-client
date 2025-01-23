@@ -4,22 +4,25 @@ import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 
-const PaymentForm = ({registerInfo}) => {
-console.log(registerInfo)
+const PaymentForm = ({ registerInfo }) => {
+  console.log(registerInfo)
   const stripe = useStripe()
   const elements = useElements()
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const {user}=useAuth()
-  const axiosPublic=useAxiosPublic()
-const amountSM=registerInfo?.campFees*100 
+  const { user } = useAuth()
+  const axiosPublic = useAxiosPublic()
+  const axiosSecure = useAxiosSecure()
+  const navigate=useNavigate()
+  const amountSM = registerInfo?.campFees * 100
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     setLoading(true);
     try {
       const { data } = await axiosPublic.post('/create-payment-intent', { amount: amountSM, currency: 'usd' })
@@ -31,22 +34,29 @@ const amountSM=registerInfo?.campFees*100
           card: elements.getElement(CardElement),
           billing_details: {
             email: user?.email || 'anonymous',
-            name: user?.displayName || 'anonymous' }
+            name: user?.displayName || 'anonymous'
+          }
         },
       });
+      const txID = paymentResult.paymentIntent.id
 
-      const paymentHistory={
-        email:user?.email,
-        campName:registerInfo?.campName,
-        
 
-      }
-      
+      await axiosSecure.post('payments', {
+        email: user?.email,
+        campName: registerInfo?.campName,
+        campId: registerInfo._id,
+
+        campFees: registerInfo.campFees,
+        transactionId: txID,
+        data: new Date()
+      })
+
 
       if (paymentResult.error) {
         toast.error(`Payment failed: ${paymentResult.error.message}`);
       } else if (paymentResult.paymentIntent.status === "succeeded") {
         toast.success("Payment successful!");
+        navigate('/dashboard/registered')
       }
     } catch (error) {
       toast.error(error.message)
