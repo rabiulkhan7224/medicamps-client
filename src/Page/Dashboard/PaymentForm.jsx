@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 
 
 const PaymentForm = ({ registerInfo }) => {
-  console.log(registerInfo)
+  
   const stripe = useStripe()
   const elements = useElements()
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ const PaymentForm = ({ registerInfo }) => {
     setLoading(true);
     try {
       const { data } = await axiosPublic.post('/create-payment-intent', { amount: amountSM, currency: 'usd' })
-      console.log(data)
+      
       const clientSecret = data.clientSecret
       // Confirm the payment
       const paymentResult = await stripe.confirmCardPayment(clientSecret, {

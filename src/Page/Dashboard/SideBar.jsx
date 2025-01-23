@@ -20,7 +20,7 @@ const SideBar = () => {
     ];
   
     return (
-      <>
+      <div className=''>
         {/* Hamburger Menu for Small Screens */}
         <button
           onClick={toggleSidebar}
@@ -31,21 +31,21 @@ const SideBar = () => {
   
         {/* Sidebar */}
         <div
-          className={`fixed top-0 left-0 h-full bg-gray-800 text-white p-4 transition-transform transform ${
+          className={`fixed z-40 top-24   left-0 h-full bg-gray-800 text-white p-4 transition-transform transform ${
             isOpen ? 'translate-x-0' : '-translate-x-full'
           } lg:translate-x-0 lg:static lg:w-64`}
         >
-          <h1 className="text-2xl font-bold mb-6">My Dashboard</h1>
-          <nav>
-            <ul className="space-y-4">
+          <h1 className="text-2xl font-bold mt-6">My Dashboard</h1>
+          <nav className=''>
+            <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.name}>
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
                       isActive
-                        ? 'block px-4 py-2 rounded bg-gray-700'
-                        : 'block px-4 py-2 rounded hover:bg-gray-700'
+                        ? 'block px-2 py-2 rounded bg-gray-700'
+                        : 'block px-2 py-2 rounded hover:bg-gray-700'
                     }
                     onClick={() => setIsOpen(false)} // Close sidebar on link click (for small screens)
                   >
@@ -64,7 +64,7 @@ const SideBar = () => {
             className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
           ></div>
         )}
-      </>
+      </div>
     );
   };
 

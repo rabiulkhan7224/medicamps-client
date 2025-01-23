@@ -11,6 +11,7 @@ import AvailableCamps from "../Page/Available/AvailableCamps";
 import CampDetails from "../Page/Available/CampDetails";
 import RegisteredCamps from "../Components/RegisteredCamps";
 import Payment from "../Page/Dashboard/Payment";
+import AdminRuter from "./AdminRuter";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -49,7 +50,7 @@ const router = createBrowserRouter([{
             },
                 {
                 path:'addcamp',
-                element: <AddCamp></AddCamp>
+                element: <AdminRuter><AddCamp></AddCamp></AdminRuter>
             },
                 {
                 path:'registered',

@@ -55,7 +55,7 @@ const RegisteredCamps = () => {
     };
     if(isLoading) return <Loader></Loader>
 
-
+if(registerdatas.length===0)return<><h1 className="text-red-500 text-center text-2xl"> No register data </h1></>
     return (
         <div className="overflow-x-auto">
   <table className="table">
@@ -74,7 +74,7 @@ const RegisteredCamps = () => {
     </thead>
     <tbody>
 
-
+        
         {registerdatas.map((regidata,index)=>(<tr key={regidata._id} className="hover">
         <th>{index+1}</th>
         <td>{regidata.campName}</td>

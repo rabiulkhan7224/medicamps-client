@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import { format } from "date-fns";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { FaCalendarDay } from "react-icons/fa";
+import { FaLocationArrow, FaPeopleGroup } from "react-icons/fa6";
 
 const CampDetails = () => {
     const axiosPublic = useAxiosPublic()
@@ -40,7 +42,7 @@ const CampDetails = () => {
             participantEmail: user?.email,
             ...formData,
         };
-        console.log(participantData)
+       
         
 
         try {
@@ -71,11 +73,12 @@ const CampDetails = () => {
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{camp.campName}</h2>
-                    <p className="text-gray-600">Fees: ${camp.campFees}</p>
-                    <p className="text-gray-600">Date: {format(new Date(camp.dateTime), "PPPpp")}</p>
-                    <p className="text-gray-600">Location: {camp.location}</p>
+                    <p className="text-gray-600 font-bold">Fees: ${camp.campFees}</p>
+                    <p className="text-gray-600"><FaCalendarDay />
+                    {format(new Date(camp.dateTime), "PPPpp")}</p>
+                    <p className="text-gray-600 flex"><FaLocationArrow></FaLocationArrow> {camp.location}</p>
                     <p className="text-gray-600">Healthcare Professional: {camp.healthcareProfessional}</p>
-                    <p className="text-gray-600">Participants: {camp.participantCount}</p>
+                    <p className="text-gray-600"> <FaPeopleGroup />Participants: {camp.participantCount}</p>
                     <p className="text-gray-600">{camp.description}</p>
                     <div className="card-actions justify-center">
                         <button

@@ -16,14 +16,16 @@ const NavBar = () => {
         
     </>
     const navigate = useNavigate()
-    const handlelogOut = () => {
-        logout()
-            .then(() => {
-                toast.success('logout user')
+    const handlelogOut =async () => {
+        try {
+            await logout()
+            toast.success('logout user')    
                 navigate('/')
-            }).catch(error => {
-                console.log(error.message)
-            })
+        } catch (error) {
+            console.log(error.message)
+        }
+        
+            
     }
 
     return (

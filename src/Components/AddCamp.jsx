@@ -45,7 +45,7 @@ const AddCamp = () => {
               email:user?.email,
               name:user?.displayName,}
           }
-          console.log(campsData)
+          
           try {
            await axiosSecure.post('/addcamp',campsData)
            toast.success('New camp Added successful')

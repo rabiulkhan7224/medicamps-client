@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import CampsCard from "../../Components/CampsCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loader from "../shared/Loader";
+import useRole from "../../hooks/useRole";
 
 const AvailableCamps = () => {
   const axiosPublic = useAxiosPublic()
