@@ -81,7 +81,7 @@ if(registerdatas.length===0)return<><h1 className="text-red-500 text-center text
         <td>{regidata.campFees}</td>
         <td>{regidata.participantName}</td>
         <td><Link to={`/dashboard/payment/${regidata._id}`} disabled={regidata.paymentStatus==='paid'} className={`btn btn-outline ${regidata.paymentStatus==='paid'?'text-green-500':'bg-yellow-500'} `}>{regidata.paymentStatus}</Link></td>
-        <td>{regidata.confirmationStatus}</td>
+        <td className={` ${regidata.confirmationStatus==="Confirmed"?'text-green-600 font-bold':'text-yellow-500'}`}>{regidata.confirmationStatus}</td>
         <td><button onClick={()=>handleCancel(regidata._id,regidata.campId)} disabled={regidata.paymentStatus==='paid'} className="btn btn-outline">cancel</button></td>
         <td><button disabled={regidata.paymentStatus==='unPaid'} className="btn btn-outline">feedback</button></td>
         

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import CampsCard from "../../Components/CampsCard";
+import { Link } from "react-router";
 
 const Highest = () => {
     const axiosPublic=useAxiosPublic()
@@ -23,7 +24,7 @@ const Highest = () => {
       >
         {camps.map((camp) => <CampsCard key={camp._id} camp={camp}></CampsCard>)}
       </div>
-            
+            <div className="mx-auto text-center mb-4"><Link to={'/available'} className="btn bg-primarycolor font-bold text-xl">See More</Link></div>
         </div>
     );
 };

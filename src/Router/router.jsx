@@ -14,6 +14,8 @@ import Payment from "../Page/Dashboard/Payment";
 import AdminRuter from "./AdminRuter";
 import PaymentHistory from "../Page/Dashboard/PaymentHistory";
 import ManageCamps from "../Page/Dashboard/ManageCamps";
+import ManageRegistered from "../Page/Dashboard/ManageRegistered";
+import Aboutus from "../Page/Home/Aboutus";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -32,6 +34,10 @@ const router = createBrowserRouter([{
         {
             path:'/login',
             element:<Login></Login>,
+        },
+        {
+            path:'/about',
+            element:<Aboutus></Aboutus>,
         },
         {
             path:'/available',
@@ -70,6 +76,10 @@ const router = createBrowserRouter([{
             {
                 path:'manage-camps',
                 element: <AdminRuter><ManageCamps></ManageCamps></AdminRuter>
+            },
+            {
+                path:'manage-register',
+                element: <AdminRuter><ManageRegistered></ManageRegistered></AdminRuter>
             },
         ]
         }

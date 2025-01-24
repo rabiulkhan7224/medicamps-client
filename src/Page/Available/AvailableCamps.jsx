@@ -4,41 +4,31 @@ import { useQuery } from "@tanstack/react-query";
 import CampsCard from "../../Components/CampsCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Loader from "../shared/Loader";
-import useRole from "../../hooks/useRole";
 
 const AvailableCamps = () => {
   const axiosPublic = useAxiosPublic()
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortCriteria, setSortCriteria] = useState("alphabetical");
+  const [sortCriteria, setSortCriteria] = useState("");
   const [columns, setColumns] = useState(3);
 
   // Fetch camps data using TanStack Query
   const { data: camps = [], isLoading } = useQuery({
-    queryKey: ['camps'],
+    queryKey: ['camps', searchTerm, sortCriteria],
     queryFn: async () => {
-      const { data } = await axiosPublic.get('/camps', { params: {} })
+      const { data } = await axiosPublic.get('/camps', {
+        params: {
+          search: searchTerm,
+          sort: sortCriteria,
+        },
+      })
       return data
 
     }
   })
 
-  if (isLoading) return <Loader></Loader>;
+  // if (isLoading) return <Loader></Loader>;
 
-  // Filter and Sort Camps
-  //   const filteredCamps = camps
-  //     .filter((camp) =>
-  //       searchTerm
-  //         ? camp.campName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //           camp.location.toLowerCase().includes(searchTerm.toLowerCase())
-  //         : true
-  //     )
-  //     .sort((a, b) => {
-  //       if (sortCriteria === "mostRegistered") return b.participantCount - a.participantCount;
-  //       if (sortCriteria === "campFees") return a.campFees - b.campFees;
-  //       if (sortCriteria === "alphabetical") return a.campName.localeCompare(b.campName);
-  //       return 0;
-  //     });
-
+  
   return (
     <div className="container mx-auto p-4">
       {/* Search Bar */}
@@ -57,16 +47,17 @@ const AvailableCamps = () => {
         >
           <option value="alphabetical">Alphabetical Order</option>
           <option value="mostRegistered">Most Registered</option>
-          <option value="campFees">Camp Fees</option>
+          <option value="campFeesHigh">Highest Camp Fees</option>
+          <option value="campFeesLow">Lowest Camp Fees</option>
         </select>
         <button
-          className="btn bg-secondarycolor"
+          className="btn hidden md:flex bg-secondarycolor"
           onClick={() => setColumns(columns === 3 ? 2 : 3)}
         >
           Toggle Layout ({columns === 3 ? "Two Columns" : "Three Columns"})
         </button>
       </div>
-
+ {isLoading && <Loader></Loader>}
       {/* Camp Cards */}
       <div
         className={`grid grid-cols-1 ${columns === 2 ? "md:grid-cols-2" : "md:grid-cols-3"

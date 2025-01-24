@@ -31,7 +31,7 @@ const CampDetails = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = async (formData) => {
-       
+        
         
         setLoading(true);
         const participantData = {
@@ -50,6 +50,7 @@ const CampDetails = () => {
             toast.success("You have successfully joined the camp!");
 
             setIsModalOpen(false);
+            navigate('/dashboard/registered')
             
         } catch (error) {
             toast.error("Error: " + error.message || "Failed to join camp.");
@@ -82,7 +83,12 @@ const CampDetails = () => {
                     <p className="text-gray-600">{camp.description}</p>
                     <div className="card-actions justify-center">
                         <button
-                            onClick={() => setIsModalOpen(true)}
+                            onClick={() => {
+                                if(!user){
+                                    navigate('/login')
+                                    return;
+                                }
+                                setIsModalOpen(true)}}
                             className="btn bg-primarycolor mt-4"
                         >
                             Join Camp

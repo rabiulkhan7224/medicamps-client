@@ -91,6 +91,19 @@ const SideBar = () => {
                 Manage Camps
               </NavLink>  : ''}
             </li>
+            <li> {role === 'admin' ?
+            <NavLink
+                to={'/dashboard/manage-register'}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'block px-2 py-2 rounded bg-gray-700'
+                    : 'block px-2 py-2 rounded hover:bg-gray-700'
+                }
+              // onClick={() => setIsOpen(false)} // Close sidebar on link click (for small screens)
+              >
+                Manage Registered
+              </NavLink>  : ''}
+            </li>
             <li>
             <NavLink
                 to={'/dashboard/payments-history'}
