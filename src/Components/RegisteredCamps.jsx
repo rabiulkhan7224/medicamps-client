@@ -4,10 +4,14 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loader from "../Page/shared/Loader";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import ReactStars from "react-rating-stars-component"
 
 const RegisteredCamps = () => {
     const {user}=useAuth()
     const axiosSecure=useAxiosSecure()
+    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
     const {data:registerdatas=[],isLoading,refetch}=useQuery({queryKey:['registercamps',user],
         queryFn:async()=>{
             const {data}=await axiosSecure.get(`/myregister/${user?.email}`)
@@ -53,10 +57,40 @@ const RegisteredCamps = () => {
         </div>
       ),{position:"top-center"});
     };
+
+    const { register: feedbackRegister, handleSubmit: handleFeedbackSubmit, setValue, formState: { errors: feedbackErrors } } = useForm();
+
+    const onFeedbackSubmit = async (data) => {
+      // Send feedback to server (e.g., rating, feedback, and name)
+      console.log(data);
+      if(data){
+try {
+
+ await axiosSecure.post('/review',data)
+  toast.success('Thank you for FeedBack ')
+  
+} catch (error) {
+  toast.error(error.message)
+}
+
+
+      }
+
+
+      // Close the feedback modal after submitting feedback
+      setIsFeedbackModalOpen(false);
+    };
+
+
+
+
     if(isLoading) return <Loader></Loader>
 
 if(registerdatas.length===0)return<><h1 className="text-red-500 text-center text-2xl"> No register data </h1></>
     return (
+
+      
+    <div>
         <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -83,7 +117,7 @@ if(registerdatas.length===0)return<><h1 className="text-red-500 text-center text
         <td><Link to={`/dashboard/payment/${regidata._id}`} disabled={regidata.paymentStatus==='paid'} className={`btn btn-outline ${regidata.paymentStatus==='paid'?'text-green-500':'bg-yellow-500'} `}>{regidata.paymentStatus}</Link></td>
         <td className={` ${regidata.confirmationStatus==="Confirmed"?'text-green-600 font-bold':'text-yellow-500'}`}>{regidata.confirmationStatus}</td>
         <td><button onClick={()=>handleCancel(regidata._id,regidata.campId)} disabled={regidata.paymentStatus==='paid'} className="btn btn-outline">cancel</button></td>
-        <td><button disabled={regidata.paymentStatus==='unPaid'} className="btn btn-outline">feedback</button></td>
+        <td><button disabled={regidata.paymentStatus==='unPaid'}  onClick={() => setIsFeedbackModalOpen(true)} className="btn btn-outline">feedback</button></td>
         
       </tr>))}
      
@@ -91,6 +125,63 @@ if(registerdatas.length===0)return<><h1 className="text-red-500 text-center text
      
     </tbody>
   </table>
+ {/* Feedback Modal */}
+ {isFeedbackModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box w-96 bg-white">
+            <h1 className="text-xl font-semibold text-indigo-800 mb-4">Give Feedback</h1>
+            <form onSubmit={handleFeedbackSubmit(onFeedbackSubmit)} className="space-y-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  defaultValue={user?.displayName}
+                  {...feedbackRegister("name",{ required: "Name is required" })}
+                  className="input input-bordered w-full"
+                />
+                {feedbackErrors.name && <p className="text-red-500 text-sm">{feedbackErrors.name.message}</p>}
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Rating</span>
+                </label>
+                <ReactStars
+          count={5}
+          size={24}
+          activeColor="#ffd700"
+          onChange={(newRating) => {
+            setValue("rating", newRating); // Set the rating value in the form
+          }}
+        />
+                {feedbackErrors.rating && <p className="text-red-500 text-sm">{feedbackErrors.rating.message}</p>}
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Feedback</span>
+                </label>
+                <textarea
+                  {...feedbackRegister("feedback", { required: "Feedback is required" })}
+                  className="textarea textarea-bordered w-full"
+                />
+                {feedbackErrors.feedback && <p className="text-red-500 text-sm">{feedbackErrors.feedback.message}</p>}
+              </div>
+
+              <div className="modal-action">
+                <button type="button" className="btn btn-ghost" onClick={() => setIsFeedbackModalOpen(false)}>
+                  Close
+                </button>
+                <button type="submit" className="btn btn-primary">Submit Feedback</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+</div>
 </div>
     );
 };
