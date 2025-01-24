@@ -16,6 +16,7 @@ import PaymentHistory from "../Page/Dashboard/PaymentHistory";
 import ManageCamps from "../Page/Dashboard/ManageCamps";
 import ManageRegistered from "../Page/Dashboard/ManageRegistered";
 import Aboutus from "../Page/Home/Aboutus";
+import Profile from "../Page/Dashboard/Profile";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -54,7 +55,7 @@ const router = createBrowserRouter([{
             children:[
                 {
                 path:'profile',
-                element: <h1>hello profile</h1>
+                element: <Profile></Profile>
             },
                 {
                 path:'addcamp',

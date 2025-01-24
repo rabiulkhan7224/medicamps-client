@@ -95,6 +95,7 @@ const ManageCamps = () => {
 
    
   };
+  if(isLoading) return <><h1>waiting...</h1></>
 
   return (
     <div className="overflow-x-auto">
