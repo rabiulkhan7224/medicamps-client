@@ -55,6 +55,19 @@ const SideBar = () => {
             </li>
             <li>
               <NavLink
+                to={'/dashboard'}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'block px-2 py-2 rounded bg-gray-700'
+                    : 'block px-2 py-2 rounded hover:bg-gray-700'
+                }
+              // onClick={() => setIsOpen(false)} // Close sidebar on link click (for small screens)
+              >
+                Analytics
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to={'/dashboard/registered'}
                 className={({ isActive }) =>
                   isActive

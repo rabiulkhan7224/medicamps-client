@@ -17,6 +17,7 @@ import ManageCamps from "../Page/Dashboard/ManageCamps";
 import ManageRegistered from "../Page/Dashboard/ManageRegistered";
 import Aboutus from "../Page/Home/Aboutus";
 import Profile from "../Page/Dashboard/Profile";
+import Analytics from "../Page/Dashboard/Analytics";
 
 const router = createBrowserRouter([{
     path:'/',
@@ -64,6 +65,10 @@ const router = createBrowserRouter([{
                 {
                 path:'registered',
                 element: <RegisteredCamps></RegisteredCamps>
+            },
+                {
+                    index: true,
+                element: <Analytics></Analytics>
             },
             {
                 path:'payment/:id',

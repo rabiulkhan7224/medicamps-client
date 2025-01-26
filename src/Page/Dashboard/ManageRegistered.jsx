@@ -66,6 +66,7 @@ const ManageRegistered = () => {
   };
 
   if (isLoading) return <Loader />;
+  
 
   return (
     <div className="overflow-x-auto">

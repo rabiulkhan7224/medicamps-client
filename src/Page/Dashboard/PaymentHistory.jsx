@@ -17,6 +17,8 @@ const PaymentHistory = () => {
     })
   
     if(isLoading || !paymentdata) return <Loader></Loader>
+
+    if (paymentdata.length <0) return <><h1>No PaymentHistory</h1></>
     return (
         <div>
             <h1>payment history </h1>
