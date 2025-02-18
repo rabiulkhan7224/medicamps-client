@@ -1,5 +1,5 @@
-import banner1 from '../../assets/campbanner.jpg';
-import banner2 from '../../assets/female-doctor.jpg';
+import banner1 from '../../assets/campbanner.webp';
+import banner2 from '../../assets/female-doctor-vaccinating-her-colleague.webp';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
