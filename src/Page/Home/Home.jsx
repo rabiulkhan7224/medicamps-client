@@ -1,4 +1,6 @@
 import Banner from "./Banner";
+import FQA from "./FQA";
+import FreeTeatmeants from "./FreeTeatmeants";
 import Highest from "./Highest";
 import Review from "./Review";
 
@@ -11,6 +13,11 @@ const Home = () => {
 
           <div>
             <Highest></Highest>
+          </div>
+          <FQA></FQA>
+
+          <div>
+            <FreeTeatmeants></FreeTeatmeants>
           </div>
           <div>
             <Review></Review>
