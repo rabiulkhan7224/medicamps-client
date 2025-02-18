@@ -3,6 +3,7 @@ import FQA from "./FQA";
 import FreeTeatmeants from "./FreeTeatmeants";
 import Highest from "./Highest";
 import Review from "./Review";
+import Step from "./Step";
 
 const Home = () => {
     return (
@@ -18,6 +19,9 @@ const Home = () => {
 
           <div>
             <FreeTeatmeants></FreeTeatmeants>
+          </div>
+          <div>
+            <Step></Step>
           </div>
           <div>
             <Review></Review>
