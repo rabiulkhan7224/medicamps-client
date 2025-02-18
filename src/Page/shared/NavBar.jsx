@@ -56,7 +56,7 @@ const NavBar = () => {
                             {link}
                         </ul>
                     </div>
-                    <img className="w-10" src="/medicamps-logos.png" alt="" />
+                    <img className="w-10" src="/medicamps-logos.webp" alt="" />
                     <Link to={'/'} className=" font-bold  md:text-2xl">
                     Medi Camps</Link>
                 </div>
@@ -67,7 +67,7 @@ const NavBar = () => {
                 </div>
                 <div className="navbar-end">
                     {user ? <div className="dropdown dropdown-hover relative">
-                        <div tabIndex={0} role="button" className=" m-1"><div className="avatar">
+                        <div tabIndex={0} role="button" className=""><div className="avatar">
                             <div className="ring-primary ring-offset-base-100 w-16 rounded-full ring ring-offset-2">
                                 <img 
                                  referrerPolicy='no-referrer'

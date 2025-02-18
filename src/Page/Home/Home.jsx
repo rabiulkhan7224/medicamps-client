@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Contact from "./Contact";
 import FQA from "./FQA";
 import FreeTeatmeants from "./FreeTeatmeants";
 import Highest from "./Highest";
@@ -25,6 +26,9 @@ const Home = () => {
           </div>
           <div>
             <Review></Review>
+          </div>
+          <div>
+            <Contact></Contact>
           </div>
             </div>
         </div>

@@ -1,5 +1,28 @@
+import { useState } from 'react';
 import doctor from '../../assets/freeaportmeant.webp'
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 const FreeTeatmeants = () => {
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [status, setStatus] = useState("");
+    const axiosPublic=useAxiosPublic()
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axiosPublic.post("/free-tm-sendMail", formData);
+            setStatus(response.data.message);
+            setFormData({ name: "", email: "", message: "" });
+        } catch (error) {
+            setStatus("Failed to send message.");
+        }
+    };
+
+
+
     return (
         <div>
 
@@ -29,7 +52,7 @@ const FreeTeatmeants = () => {
                                 className="textarea textarea-bordered textarea-md w-full max-w-xs"></textarea>
                             <input className="btn bg-secondarycolor" type="submit" value="Send Message" />
                         </form>
-
+                        {status && <p className="text-green-600 mt-4">{status}</p>}
                     </div>
                 </div>
             </div>
