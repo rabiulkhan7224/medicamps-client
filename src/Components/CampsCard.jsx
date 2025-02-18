@@ -46,7 +46,7 @@ const CampsCard = ({ camp }) => {
         <div className="card-actions mt-4">
           <Link
             to={`/camps/${camp._id}`}
-            className="btn bg-accentcolor btn-block"
+            className="btn rounded-3xl bg-secondarycolor "
           >
             Details
           </Link>
