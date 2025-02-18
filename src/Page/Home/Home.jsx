@@ -7,7 +7,7 @@ import Review from "./Review";
 const Home = () => {
     return (
         <div>
-            <div className="relative">
+            <div className="">
 
           <Banner></Banner>
 
