@@ -6,12 +6,11 @@ const NavBar = () => {
 
     const { user, logout } = useAuth()
     const location=useLocation()
-    console.log(location)
     const link = <>
         <li><NavLink className={({ isActive }) =>
             isActive ? "text-blue-600  shadow-lg shadow-secondarycolor" : "text-black "
         } to={'/'}>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) =>
+        <li><NavLink  className={({ isActive }) =>
             isActive ? "text-blue-600  shadow-lg shadow-secondarycolor" : "text-black"
         } to={'/available'}>Available Camps</NavLink></li>
         <li><NavLink className={({ isActive }) =>

@@ -22,10 +22,10 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="container mx-auto p-10 text-center">
+        <section  className="container h-screen  mx-auto p-10 text-center">
            
-        <h2 className="text-3xl font-bold">Contact Us</h2>
-        <p className="mt-4">Have questions? Reach out to us anytime.</p>
+        <h2 id="contact" className="text-3xl font-bold">Contact Us</h2>
+        <p className="mt-2">Have questions? Reach out to us anytime.</p>
         <form onSubmit={handleSubmit} className="mt-6">
             <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="p-2 border rounded w-full mb-4" required />
             <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} className="p-2 border rounded w-full mb-4" required />
