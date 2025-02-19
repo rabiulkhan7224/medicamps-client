@@ -11,23 +11,23 @@ const FQA = () => {
                 <h1 className='text-2xl md:text-4xl font-bold'>Asked Questions</h1>
             <div className="collapse collapse-arrow bg-base-200">
                 <input type="radio" name="my-accordion-2" defaultChecked />
-                <div className="collapse-title text-xl font-medium">Where Can I Go To Provide A Sample For Testing?</div>
+                <div className="collapse-title text-xl font-medium">How can I find a medical camp near me?</div>
                 <div className="collapse-content ">
-                    <p>hello</p>
+                    <p>You can browse the list of upcoming medical camps on our website under the “available Camps” section. You can also filter by location and specialty to find the best camp for your needs.</p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-base-200">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title text-xl font-medium">What happens to my sample once I have provided it?</div>
+                <div className="collapse-title text-xl font-medium"> How do I register for an account and log in?</div>
                 <div className="collapse-content">
-                    <p>hello</p>
+                    <p>Click the "Register" button, fill in your details, and create an account. Once registered, use your email and password to log in. You can also sign in with Google for quick access.</p>
                 </div>
             </div>
             <div className="collapse collapse-arrow bg-base-200">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title text-xl font-medium">What happens to my sample once I have provided it?</div>
+                <div className="collapse-title text-xl font-medium">Is free treatment available for everyone?</div>
                 <div className="collapse-content">
-                    <p>hello</p>
+                    <p>Yes, free treatment is available for eligible patients. You need to apply for free treatment through the application form on our website. Our team will review your request and notify you via email if you qualify.</p>
                 </div>
             </div>
             </div>
