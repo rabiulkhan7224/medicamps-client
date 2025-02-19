@@ -17,7 +17,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="">
       {/* Swiper Slider */}
       <Swiper
         spaceBetween={30}
@@ -31,18 +31,18 @@ const Banner = () => {
         // }}
         // navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="h-[60vh]"
+        className="h-[80vh]"
       >
         <SwiperSlide>
           <div className="relative">
             <img
-              className="w-full h-[60vh] object-cover"
+              className="w-full h-[80vh]  object-cover"
               src={banner1}
               alt="Camp Banner"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
               <motion.div
-                className="text-center text-white px-4"
+                className=" text-center   text-white px-4"
                 variants={textVariants}
                 initial="hidden"
                 animate="visible"
@@ -65,7 +65,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="relative">
             <img
-              className="w-full h-[60vh] object-cover"
+              className="w-full h-[80vh] object-cover"
               src={banner2}
               alt="Female Doctor"
             />

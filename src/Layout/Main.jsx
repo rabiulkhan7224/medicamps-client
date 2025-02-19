@@ -7,7 +7,7 @@ const Main = () => {
         <div className="bg-background">
         
         <Navbar></Navbar>
-        <main className='mt-24  min-h-[calc(100vh-68px)]'>
+        <main className='mt-20  min-h-[calc(100vh-68px)]'>
 
         <Outlet></Outlet>
         </main>

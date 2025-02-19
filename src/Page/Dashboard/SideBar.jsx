@@ -34,7 +34,7 @@ const SideBar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed z-40 top-24   left-0 h-full bg-gray-800 text-white p-4 transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed z-40 top-24   left-0 h-full bg-gray-800 text-white p-4 transition-transform overflow-y-scroll transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
           } lg:translate-x-0 lg:static lg:w-64`}
       >
         <h1 className="text-2xl font-bold mt-6">My Dashboard</h1>

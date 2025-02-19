@@ -1,22 +1,27 @@
-import { Link, NavLink, useNavigate } from "react-router";
-import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
 
     const { user, logout } = useAuth()
+    const location=useLocation()
+    console.log(location)
     const link = <>
         <li><NavLink className={({ isActive }) =>
-            isActive ? "text-blue-600" : "text-black"
+            isActive ? "text-blue-600  shadow-lg shadow-secondarycolor" : "text-black "
         } to={'/'}>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
-            isActive ? "text-blue-600" : "text-black"
+            isActive ? "text-blue-600  shadow-lg shadow-secondarycolor" : "text-black"
         } to={'/available'}>Available Camps</NavLink></li>
         <li><NavLink className={({ isActive }) =>
-            isActive ? "text-blue-600" : "text-black"
+            isActive ? "text-blue-600  shadow-lg shadow-secondarycolor" : "text-black"
         } to={'/about'}>About us</NavLink></li>
-        
-        
+       
+        {
+            location.pathname==='/' && <><li><a href="/#contact">Contact</a></li>
+        <li><a href="#apply">Apply</a></li></>
+        }
     </>
     const navigate = useNavigate()
     const handlelogOut =async () => {
@@ -61,7 +66,7 @@ const NavBar = () => {
                     Medi Camps</Link>
                 </div>
                 <div className="navbar-center hidden md:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="flex  space-x-2 px-1">
                         {link}
                     </ul>
                 </div>

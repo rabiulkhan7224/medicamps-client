@@ -26,10 +26,10 @@ const FreeTeatmeants = () => {
 
 
         return (
-            <div>
+            <div >
 
 
-                <div className="hero  min-h-screen">
+                <div id="apply" className="hero  min-h-screen">
                     <div className="hero-content flex-col lg:flex-row">
                         <img
                             src={doctor}
