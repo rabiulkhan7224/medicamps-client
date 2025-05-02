@@ -16,7 +16,7 @@ const Login = () => {
     const form = location?.state?.from.pathname || '/'
     const { register, handleSubmit, } = useForm()
     const onSubmit = async (data) => {
-        
+
         if (data) {
             try {
                 await login(data.email, data.password)
@@ -28,15 +28,15 @@ const Login = () => {
             }
         }
     }
-const axiosPublic=useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
     const handleSigninWithGoogle = async () => {
 
         try {
-            const {user} = await signInWithGoogle()
-            
-            if(user){
+            const { user } = await signInWithGoogle()           
 
-                await axiosPublic.post(`/users/${user.email}`,{name:user.displayName,email:user.email})
+            if (user) {
+
+                await axiosPublic.post(`/users/${user.email}`, { name: user.displayName, email: user.email })
                 toast.success('Login Successful')
                 navigate(form, { replace: true })
             }
@@ -54,12 +54,12 @@ const axiosPublic=useAxiosPublic()
 
 
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-
+                        
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input {...register('email')} type="email" name="email"   placeholder="email" className="input input-bordered" required />
+                        <input {...register('email')} type="email" name="email" placeholder="email" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control relative">
@@ -76,8 +76,8 @@ const axiosPublic=useAxiosPublic()
                 </form>
                 <p className="text-red-500"></p>
                 <h2 className="text-center">Don't have an account? <Link to={'/register'} className="text-blue-500 hover:underline">Register</Link></h2>
-                <h2 className="text-center"> Organizer Email and Password <Link  to={'https://github.com/rabiulkhan7224/medicamps-client#-credentials'} target="_blank" 
-    rel="noopener noreferrer" className="text-blue-500 hover:underline">Credentials</Link></h2>
+                <h2 className="text-center"> Organizer Email and Password <Link to={'https://github.com/rabiulkhan7224/medicamps-client#-credentials'} target="_blank"
+                    rel="noopener noreferrer" className="text-blue-500 hover:underline">Credentials</Link></h2>
 
 
                 {/* <button onClick={handleSigninwithGoogle} className="btn w-11/12 mx-auto "><FcGoogle /> Sign in with Google</button> */}
